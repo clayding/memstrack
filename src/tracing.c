@@ -225,6 +225,7 @@ static char* get_process_name_by_pid(const int pid)
 
 	log_debug("Failed to retrive process name of %d\n", pid);
 	sprintf(read_buf, "(%d)", pid);
+    //("read_buf:%s  pid:%d\n", read_buf, pid);
 
 	return strdup(read_buf);
 }
@@ -571,6 +572,16 @@ struct Task* get_or_new_task(long pid) {
 
 	return task;
 };
+
+struct Task* get_or_new_task_with_checking_name(long pid, char* name) {
+    struct Task *task = get_or_new_task(pid);
+    if (strstr(task->task_name, name)) {
+        return task;
+    }
+
+    return NULL;
+}
+
 
 struct Task* get_or_new_task_with_name(long pid, char* name) {
 	struct Task *task;

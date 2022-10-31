@@ -124,6 +124,7 @@ struct Task* try_get_task(long pid);
 struct Task* task_exit(long pid);
 struct Task* get_or_new_task(long pid);
 struct Task* get_or_new_task_with_name(long pid, char* task_name);
+struct Task* get_or_new_task_with_checking_name(long pid, char* check_name);
 struct Task **collect_tasks_sorted(int shallow, int *count);
 void refresh_task_name(struct Task* task);
 

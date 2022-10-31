@@ -170,9 +170,11 @@ static int perf_handle_mm_page_alloc(const unsigned char* header) {
 		event.pages_alloc *= 2;
 	}
 
-	task = get_or_new_task(pid);
+    task = get_or_new_task(pid);
 
-	__process_stacktrace(callchain, task, &event);
+    if (task) {
+	    __process_stacktrace(callchain, task, &event);
+    }
 
 	return 0;
 }

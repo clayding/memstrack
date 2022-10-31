@@ -1,4 +1,4 @@
-CC := gcc
+#CC := gcc
 CFLAGS := -Os -g -std=c11 -fPIC $(CFLAGS)
 LDFLAGS := -Wl,--as-needed $(LDFLAGS)
 LIBS := -lncurses -ltinfo -ldl
